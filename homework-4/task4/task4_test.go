@@ -19,7 +19,7 @@ var tests = []struct {
 
 func TestCreatePoint(t *testing.T) {
 	fmt.Println(t.Name())
-	p := New()
+	p := New(1, 1)
 	if p == nil {
 		t.Errorf("The point must be created")
 	}
@@ -28,8 +28,11 @@ func TestCreatePoint(t *testing.T) {
 //TODO сделать сравнение слайсов для вывода ошибок
 func TestHorseSteps(t *testing.T) {
 	fmt.Println(t.Name())
+	horse := &Horse{}
+
 	for _, e := range tests {
-		points := AvailablePoints(e.x, e.y)
+		point := New(e.x, e.y)
+		points := horse.AvailablePoints(*point)
 		if !reflect.DeepEqual(points, e.exp) {
 			t.Errorf("Find(%v, %d) = %v, expected %d", e.x, e.y, points, e.exp)
 		}
