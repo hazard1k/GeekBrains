@@ -37,6 +37,7 @@ func getWalkFunc(what string) func(path string, info os.FileInfo, err error) err
 					fmt.Printf("Found at %s (%v,%v)\n", absPath, lineCounter, idx+1)
 				}
 			}
+			file.Close()
 		}
 
 		return nil
